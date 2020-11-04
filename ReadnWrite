@@ -1,0 +1,25 @@
+package com.company;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class ReadnWrite extends SCANNER {
+    public static void readnWrite(String NameOfFile) throws Exception {
+        try {
+            FileReader fr = new FileReader("C:\\Users\\Мюриель\\Desktop\\WorkDock\\" + NameOfFile + ".txt");
+            Scanner scan = new Scanner(fr);
+            while (scan.hasNextLine()) {
+                System.out.println(scan.nextLine());
+            }
+            fr.close();
+        } catch (FileNotFoundException e) {
+            Text.IfYourNameWasNotFounded(NameOfFile);
+            Text.PleasingToWrtiting();
+            SCANNER scanner = new SCANNER();
+            scanner.SetName(scanner.GetName());
+            Text.YourWrittedName(scanner.NameOfFile);
+            ReadnWrite.readnWrite(scanner.NameOfFile);
+        }
+    }
+
+}
