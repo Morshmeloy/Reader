@@ -1,0 +1,90 @@
+package com.company;
+
+import java.io.IOException;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Text.PleasingToWrtiting();
+        SCANNER scanner = new SCANNER();
+        scanner.SetName(scanner.GetName());
+        Text.YourWrittedName(scanner.NameOfFile);
+        try {
+            ReadnWrite.readnWrite(scanner.NameOfFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Text.WhatsNext();
+        scanner.SetWhatsPersonWantToDo(scanner.GetWhatsPersonWantToDo());
+        FileNumberOf NumberOf = new FileNumberOf();
+        switch (scanner.WhatsPersonWantToDo) {
+            case ("количество символов без пробелов"):
+                try {
+                    NumberOf.NumberOfLetters(scanner.NameOfFile);
+                    System.out.println(NumberOf.FileNumberOfLetters);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("количество символов с пробелами"):
+                try {
+                    NumberOf.NumberOfLettersWithSpace(scanner.NameOfFile);
+                    System.out.println(NumberOf.FileNumberOfLettersWithSpace);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("количество слов"):
+                try {
+                    NumberOf.NumberOfWords(scanner.NameOfFile);
+                    System.out.println(NumberOf.FileNumberOfWords);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case ("количество пробелов"):
+                try {
+                    NumberOf.NumberOfSpace(scanner.NameOfFile);
+                    System.out.println(NumberOf.FileNumberOfSpace);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case ("количество точек, запятых"):
+                try {
+                    NumberOf.NumberOfDots(scanner.NameOfFile);
+                    System.out.println(NumberOf.FileNumberOfDots);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("количество строк в файле"):
+                try {
+                    NumberOf.NumberOfLines(scanner.NameOfFile);
+                    System.out.println(NumberOf.FileNumberOfLines);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                break;
+            case ("Хочу ввести сам символ который найти"):
+                try {
+                    Text.PleaseWriteYourSimbol();
+                    scanner.SetWhatsSimbolPersonWant(scanner.GetWhatsSimbolPersonWant());
+                    Text.YourSimbolIs(scanner.WhatsSimbolPersonWant);
+                    NumberOf.NumberOfYourSimbol(scanner.NameOfFile, scanner.WhatsSimbolPersonWant);
+                    System.out.println(NumberOf.FileNumberOfYourSimbol);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+    }
+
+
+}
