@@ -2,32 +2,22 @@ package com.company;
 
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.Scanner;
 
-public class FileNumberOf extends SCANNER {
-    int FileNumberOfWords;
-    int FileNumberOfLetters;
-    int FileNumberOfLettersWithSpace;
-    int FileNumberOfLines;
-    int FileNumberOfDots;
-    int FileNumberOfSpace;
-    int FileNumberOfYourSimbol;
+public class FileNumberOf extends FileReaderClass{
 
 
-    public int NumberOfWords(String NameOfFile) throws IOException {
+    public int NumberOfWords(String NameOfFile){
+        int FileNumberOfWords = 0;
         try {
-            FileReader fr = new FileReader("C:\\Users\\Мюриель\\Desktop\\WorkDock\\" + NameOfFile + ".txt");
-            LineNumberReader NumberOfLinesReader = new LineNumberReader(fr);
-            Scanner scan = new Scanner(fr);
-            FileNumberOfWords = 0;
+            Scanner scan = new Scanner(FileReaderMethod(NameOfFile));
             while (scan.hasNext()) {
                 scan.next();
                 FileNumberOfWords++;
             }
-            fr.close();
+            FileReaderMethod(NameOfFile).close();
 
 
         } catch (IOException e) {
@@ -36,44 +26,44 @@ public class FileNumberOf extends SCANNER {
         return FileNumberOfWords;
     }
 
-    public int NumberOfLettersWithSpace(String NameOfFile) throws IOException {
+    public int NumberOfLettersWithSpace(String NameOfFile)  {
+        int FileNumberOfLettersWithSpace = 1;
         try {
-            FileReader fr = new FileReader("C:\\Users\\Мюриель\\Desktop\\WorkDock\\" + NameOfFile + ".txt");
-            LineNumberReader NumberOfLinesReader = new LineNumberReader(fr);
-            Scanner scan = new Scanner(fr);
-            FileNumberOfLettersWithSpace = 1;
+
+            Scanner scan = new Scanner(FileReaderMethod(NameOfFile));
+
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 String[] number = line.split("");
-                for (int i = 0; i < number.length; i++) {
-                    int c = number[i].length();
+                for (String s : number) {
+                    int c = s.length();
                     FileNumberOfLettersWithSpace = c + FileNumberOfLettersWithSpace;
                 }
             }
-            fr.close();
+            FileReaderMethod(NameOfFile).close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return FileNumberOfLettersWithSpace;
     }
 
-    public int NumberOfLetters(String NameOfFile) throws IOException {
+    public int NumberOfLetters(String NameOfFile){
+        int  FileNumberOfLetters = 0;
         try {
-            FileReader fr = new FileReader("C:\\Users\\Мюриель\\Desktop\\WorkDock\\" + NameOfFile + ".txt");
-            LineNumberReader NumberOfLinesReader = new LineNumberReader(fr);
-            Scanner scan = new Scanner(fr);
-            FileNumberOfLetters = 0;
+
+            Scanner scan = new Scanner(FileReaderMethod(NameOfFile));
+
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 String[] number = line.split(" ");
-                for (int i = 0; i < number.length; i++) {
-                    int c = number[i].length();
+                for (String s : number) {
+                    int c = s.length();
                     FileNumberOfLetters = c + FileNumberOfLetters;
                 }
             }
 
 
-            fr.close();
+            FileReaderMethod(NameOfFile).close();
 
 
         } catch (IOException e) {
@@ -84,14 +74,14 @@ public class FileNumberOf extends SCANNER {
 
 
     public int NumberOfLines(String NameOfFile) throws IOException {
+        int FileNumberOfLines = 0;
         try {
-            FileReader fr = new FileReader("C:\\Users\\Мюриель\\Desktop\\WorkDock\\" + NameOfFile + ".txt");
-            LineNumberReader NumberOfLinesReader = new LineNumberReader(fr);
-            FileNumberOfLines = 0;
+            LineNumberReader NumberOfLinesReader = new LineNumberReader(FileReaderMethod(NameOfFile));
+
             while (NumberOfLinesReader.readLine() != null) {
                 FileNumberOfLines++;
             }
-            fr.close();
+            FileReaderMethod(NameOfFile).close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -100,17 +90,16 @@ public class FileNumberOf extends SCANNER {
     }
 
 
-    public int NumberOfDots(String NameOfFile) throws IOException {
+    public int NumberOfDots(String NameOfFile){
+        int  FileNumberOfDots = 0;
         try {
-            FileReader fr = new FileReader("C:\\Users\\Мюриель\\Desktop\\WorkDock\\" + NameOfFile + ".txt");
-            LineNumberReader NumberOfLinesReader = new LineNumberReader(fr);
-            Scanner scan = new Scanner(fr);
-            FileNumberOfDots = 0;
+            Scanner scan = new Scanner(FileReaderMethod(NameOfFile));
+
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 String[] number = line.split("");
-                for (int i = 0; i < number.length; i++) {
-                    if (number[i].equals(",") || number[i].equals(".")) {
+                for (String s : number) {
+                    if (s.equals(",") || s.equals(".")) {
                         FileNumberOfDots++;
                     }
 
@@ -118,7 +107,7 @@ public class FileNumberOf extends SCANNER {
             }
 
 
-            fr.close();
+            FileReaderMethod(NameOfFile).close();
 
 
         } catch (IOException e) {
@@ -128,17 +117,16 @@ public class FileNumberOf extends SCANNER {
     }
 
 
-    public int NumberOfSpace(String NameOfFile) throws IOException {
+    public int NumberOfSpace(String NameOfFile) {
+        int   FileNumberOfSpace = 0;
         try {
-            FileReader fr = new FileReader("C:\\Users\\Мюриель\\Desktop\\WorkDock\\" + NameOfFile + ".txt");
-            LineNumberReader NumberOfLinesReader = new LineNumberReader(fr);
-            Scanner scan = new Scanner(fr);
-            FileNumberOfSpace = 0;
+            Scanner scan = new Scanner(FileReaderMethod(NameOfFile));
+
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 String[] number = line.split("");
-                for (int i = 0; i < number.length; i++) {
-                    if (number[i].equals(" ")) {
+                for (String s : number) {
+                    if (s.equals(" ")) {
                         FileNumberOfSpace++;
                     }
 
@@ -150,17 +138,16 @@ public class FileNumberOf extends SCANNER {
         return FileNumberOfSpace;
     }
 
-    public int NumberOfYourSimbol(String NameOfFile, String WhatsSimbolPersonWant) throws IOException {
+    public int NumberOfYourSimbol(String NameOfFile, String WhatsSimbolPersonWant) {
+        int FileNumberOfYourSimbol = 0;
         try {
-            FileReader fr = new FileReader("C:\\Users\\Мюриель\\Desktop\\WorkDock\\" + NameOfFile + ".txt");
-            LineNumberReader NumberOfLinesReader = new LineNumberReader(fr);
-            Scanner scan = new Scanner(fr);
-            FileNumberOfYourSimbol = 0;
+            Scanner scan = new Scanner(FileReaderMethod(NameOfFile));
+
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 String[] number = line.split("");
-                for (int i = 0; i < number.length; i++) {
-                    if (number[i].equals(WhatsSimbolPersonWant)) {
+                for (String s : number) {
+                    if (s.equals(WhatsSimbolPersonWant)) {
                         FileNumberOfYourSimbol++;
                     }
 
