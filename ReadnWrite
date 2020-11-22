@@ -1,18 +1,16 @@
 package com.company;
-
 import java.io.*;
 import java.util.Scanner;
 
-public class ReadnWrite extends SCANNER {
-    public static void readnWrite(String NameOfFile) throws Exception {
+public class ReadnWrite extends FileReaderClass  {
+     static void readnWrite(String NameOfFile)   {
         try {
-            FileReader fr = new FileReader("C:\\Users\\Мюриель\\Desktop\\WorkDock\\" + NameOfFile + ".txt");
-            Scanner scan = new Scanner(fr);
+            Scanner scan = new Scanner(FileReaderMethod(NameOfFile));
             while (scan.hasNextLine()) {
                 System.out.println(scan.nextLine());
             }
-            fr.close();
-        } catch (FileNotFoundException e) {
+            FileReaderMethod(NameOfFile).close();
+        } catch (IOException e) {
             Text.IfYourNameWasNotFounded(NameOfFile);
             Text.PleasingToWrtiting();
             SCANNER scanner = new SCANNER();
