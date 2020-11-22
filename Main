@@ -19,69 +19,45 @@ public class Main {
         FileNumberOf NumberOf = new FileNumberOf();
         switch (scanner.WhatsPersonWantToDo) {
             case ("количество символов без пробелов"):
-                try {
-                    NumberOf.NumberOfLetters(scanner.NameOfFile);
-                    System.out.println(NumberOf.FileNumberOfLetters);
+                NumberOf.NumberOfLetters(scanner.NameOfFile);
+                System.out.println(NumberOf.NumberOfLetters(scanner.NameOfFile));
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
                 break;
             case ("количество символов с пробелами"):
-                try {
-                    NumberOf.NumberOfLettersWithSpace(scanner.NameOfFile);
-                    System.out.println(NumberOf.FileNumberOfLettersWithSpace);
+                NumberOf.NumberOfLettersWithSpace(scanner.NameOfFile);
+                System.out.println(NumberOf.NumberOfLettersWithSpace(scanner.NameOfFile));
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
                 break;
             case ("количество слов"):
-                try {
-                    NumberOf.NumberOfWords(scanner.NameOfFile);
-                    System.out.println(NumberOf.FileNumberOfWords);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                NumberOf.NumberOfWords(scanner.NameOfFile);
+                System.out.println(NumberOf.NumberOfWords(scanner.NameOfFile));
                 break;
 
             case ("количество пробелов"):
-                try {
-                    NumberOf.NumberOfSpace(scanner.NameOfFile);
-                    System.out.println(NumberOf.FileNumberOfSpace);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                NumberOf.NumberOfSpace(scanner.NameOfFile);
+                System.out.println(NumberOf.NumberOfSpace(scanner.NameOfFile));
                 break;
 
             case ("количество точек, запятых"):
-                try {
-                    NumberOf.NumberOfDots(scanner.NameOfFile);
-                    System.out.println(NumberOf.FileNumberOfDots);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                NumberOf.NumberOfDots(scanner.NameOfFile);
+                System.out.println(NumberOf.NumberOfDots(scanner.NameOfFile));
                 break;
             case ("количество строк в файле"):
                 try {
                     NumberOf.NumberOfLines(scanner.NameOfFile);
-                    System.out.println(NumberOf.FileNumberOfLines);
+                    System.out.println(NumberOf.NumberOfLines(scanner.NameOfFile));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
                 break;
             case ("Хочу ввести сам символ который найти"):
-                try {
-                    Text.PleaseWriteYourSimbol();
-                    scanner.SetWhatsSimbolPersonWant(scanner.GetWhatsSimbolPersonWant());
-                    Text.YourSimbolIs(scanner.WhatsSimbolPersonWant);
-                    NumberOf.NumberOfYourSimbol(scanner.NameOfFile, scanner.WhatsSimbolPersonWant);
-                    System.out.println(NumberOf.FileNumberOfYourSimbol);
+                Text.PleaseWriteYourSimbol();
+                scanner.SetWhatsSimbolPersonWant(scanner.GetWhatsSimbolPersonWant());
+                Text.YourSimbolIs(scanner.WhatsSimbolPersonWant);
+                NumberOf.NumberOfYourSimbol(scanner.NameOfFile, scanner.WhatsSimbolPersonWant);
+                System.out.println(NumberOf.NumberOfYourSimbol(scanner.NameOfFile, NumberOf.WhatsSimbolPersonWant));
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
                 break;
         }
     }
